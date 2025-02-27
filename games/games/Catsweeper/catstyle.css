@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
+
+
+body {
+    font-family: 'Baloo 2', sans-serif; /* Playful rounded font */
+    text-align: center;
+    background-color: #FFF3E0; /* Soft beige for a cozy look */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background-color: #5D4037; /* Dark brown for contrast */
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.navbar a {
+    color: #FFEB3B; /* Bright yellow for Oyen’s playful vibes */
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+/* Game Container */
+#game-container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+/* Game Board */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); /* mobile compatibility */
+    gap: 5px;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 100%;
+    min-height: auto;
+}
+
+/* Cells */
+.cell {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #FF9800; /* Oyen Orange */
+    border: 2px solid #D84315; /* Darker orange for borders */
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    max-width: 40px;
+    color: #3E2723; /* Dark brown text */
+}
+
+/* Cell Hover Effect */
+.cell:hover {
+    background-color: #FFD180; /* Lighter orange */
+    transform: scale(1.1);
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+    #game-board {
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        gap: 3px;
+    }
+    .cell {
+        font-size: 16px;
+        max-width: 30px;
+    }
+}
+
+/* Cell States */
+.cell.revealed {
+    background-color: #FFD180; /* Soft pastel orange */
+}
+
+.cell.mine {
+    background-color: #D84315; /* Red for danger */
+    color: white;
+}
+
+/* Restart Button */
+#restart {
+    background-color: #FF6F00; /* Deep orange */
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.2s;
+    font-family: 'Baloo 2', sans-serif;
+}
+
+#restart:hover {
+    background-color: #E65100;
+}
+
+/* Message */
+#message {
+    font-size: 18px;
+    font-weight: bold;
+    color: #D84315;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    background-color: #5D4037;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
+}

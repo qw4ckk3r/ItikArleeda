@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangduck Game</title>
+  <link rel="icon" href="img/duckicon.png" type="image/icon type">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="../../games.html">back</a>
+  </nav>
+
+  <div id="hangman">
+    <h2>Jom main Hangduck!!</h2>
+    <img id="hangman-image" src="images/hangman-6.png" alt="Hangman Image">
+    <p>Orang paling cantik di UiTM </p>
+    <p id="word-display">_ _ _ _ _</p>
+    <p>Nyawa awak: <span id="lives">6</span></p>
+    <p id="message"></p>
+    <div id="keyboard"></div>
+    <button id="restart-button" class="hidden" onclick="initGame()">Restart</button>
+  </div>
+
+  <footer class="footer">
+    &copy; 2025 ItikArleeda. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

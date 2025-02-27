@@ -1,0 +1,144 @@
+/* Import Fredoka One Font */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+/* General Styles */
+body {
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    background-color: #b3e5fc; /* Light Aqua */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navigation Bar */
+.navbar {
+    width: 100%;
+    background-color: #01579b; /* Dark Navy Blue */
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+/* Navigation Links */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+/* Game Container */
+.match-container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    margin-top: 60px; /* Avoids navbar overlap */
+}
+
+/* Headings */
+h1 {
+    color: #01579b; /* Dark Blue */
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Game Board */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 350px;
+    min-height: 300px;
+}
+
+/* Cards */
+.card {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Ensures square cards */
+    font-size: 2rem;
+    background-color: #0288d1; /* Deep Ocean Blue */
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    user-select: none;
+}
+.card.flipped {
+    background: linear-gradient(135deg, #81d4fa, #4fc3f7); /* Light Blue Gradient */
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Win Message */
+#winMessage {
+    display: none;
+    font-size: 1.5rem;
+    color: #01579b; /* Dark Blue */
+    margin-top: 20px;
+}
+
+/* Reset Button */
+#resetButton {
+    background-color: #ff7043; /* Coral Orange */
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: 'Fredoka One', cursive;
+}
+#resetButton:hover {
+    background-color: #e64a19;
+    transform: scale(1.05);
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    .card {
+        font-size: 1.8rem;
+    }
+    .game-board {
+        max-width: 90%;
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 8px;
+    }
+    #winMessage {
+        font-size: 1.2rem;
+    }
+}
+
+.footer {
+    width: 100%;
+    background-color: #01579b; /* Deep Olive Green */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
+}

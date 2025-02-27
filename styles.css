@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+
+.dangrek-regular {
+    font-family: "Dangrek", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Dangrek', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #BAB86C; /* Soft Olive Green*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar {
+    width: 100%;
+    background-color: #808000; /* Deep Olive Green */
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Links */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+/* Main Container */
+.container {
+    text-align: center;
+    padding: 20px;
+    background: #D4D699; /* Lighter Olive Green */
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    margin-top: 20px;
+    width: 80%;
+    padding-bottom: 0px;
+}
+
+h1 {
+    color: #556B2F; /* Dark Olive Green */
+    font-size: 24px;
+}
+
+p {
+    color: #6B8E23; /* Olive Drab */
+    font-size: 16px;
+}
+
+/* Cute Button */
+.cute-button {
+    background-color: #9AA74F; /* Medium Olive Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Dangrek', sans-serif;
+}
+
+.cute-button:hover {
+    background-color: #808000; /* Deep Olive Green */
+}
+
+/* Cat Container */
+.cat-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #D4D699;
+}
+
+.cat-container img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+}
+
+/* Clock */
+#clock {
+    font-size: 48px;
+    font-weight: bold;
+    color: #556B2F; /* Dark Olive Green */
+    margin-top: 0px;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    background-color: #808000; /* Deep Olive Green */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
+}
+
+/* Quote Box */
+.quote-container {
+    text-align: center;
+    margin-top: 10px;
+    background: #D4D699; /* Light Olive Green */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+}
+#quote {
+    font-size: 18px;
+    font-style: italic;
+    color: #556B2F; /* Dark Olive Green */
+}
+#new-quote {
+    background-color: #9AA74F; /* Medium Olive Green */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Dangrek', sans-serif;
+}
+#new-quote:hover {
+    background-color: #808000; /* Deep Olive Green */
+}
+
+/* Popup Container */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Content */
+.popup-content {
+    position: relative; /* Ensures child elements are positioned relative to this */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    margin-top: 15px;
+    background-color: #9AA74F; /* Medium Olive Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Dangrek', sans-serif;
+}
+
+.close-btn:hover {
+    background-color: #808000; /* Deep Olive Green */
+}

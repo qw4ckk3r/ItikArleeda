@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For you</title>
+    <link rel="icon" href="img/heart.jpg" type="image/icon type">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/letters/letters.html">Playlist</a>
+        <a href="/games/games.html">Games</a>
+        <a href="/diary/diary.html">Diary</a>
+    </nav>
+
+    <div id="clock">Loading time...</div>
+    <div class="quote-container">
+        <p id="quote">Loading a cute quote...</p>
+        <!--<button id="new-quote">Next Quote</button>-->
+    </div>    
+
+    <div class="container">
+        <h1>Welcomeeee</h1>
+        <p>Cuba tekan button di bawah ini</p>
+        <button class="cute-button" onclick="openPopup()">Tekan saya!</button>
+        <div class="cat-container">
+            <img src="img/cat-bottom.png" alt="cat at bottom">
+        </div>
+    </div>
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <h2>Arleeda Sofea!</h2>
+            <p>Saya suka awak 🐱</p>
+            <button class="close-btn" onclick="closePopup()">Okay</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+<footer class="footer">
+    &copy; 2025 ItikArleeda. All rights reserved.
+</footer>
+</html>

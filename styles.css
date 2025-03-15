@@ -57,6 +57,11 @@ h1 {
     font-size: 24px;
 }
 
+h3 {
+    color: #556B2F; /* Dark Olive Green */
+}
+
+
 p {
     color: #6B8E23; /* Olive Drab */
     font-size: 16px;

@@ -17,9 +17,9 @@
     <div class="container">
         <h1>Diari Razlan</h1>
         <h3>Just so you know you always on my mind though i cannot chat you everyday</h3>
-        <h3>Tunggu jap eh dia loading..</h3>
+        <h3>Tunggu jap eh dia loading hehe</h3>
         <div id="entries"></div>
-
+        <button id="loadMore">Load More</button>
     <script>
         let visibleEntries = 10;
 
@@ -44,11 +44,11 @@
             }
             currentIndex = maxEntries;
             if (currentIndex >= data.length) {
-                document.getElementById('loadMore').style.display = 'none'; // Hide button when all loaded
+                document.getElementById('loadMore').style.display = 'none';
             }
         }
 
-        loadEntries(); // Load initial entries
+        loadEntries(); 
 
         document.getElementById('loadMore').addEventListener('click', loadEntries);
     })

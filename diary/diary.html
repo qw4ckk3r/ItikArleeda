@@ -17,22 +17,42 @@
     <div class="container">
         <h1>Diari Razlan</h1>
         <h3>Just so you know you always on my mind though i cannot chat you everyday</h3>
-        <div class="entry">
-            <h2>14/3/2025</h2>
-            <p>saya balik Shah Alam sebab nak amik parcel yang saya salah alamat hehe. Petang hujan kat shah alam jadi saya terpaksa berbuka sini</p>
-            <p>Thennn saya berbuka saya makan sorang. Hujan sampai pukul 8 lebih jadi saya gerak balik gombak pukul 9 gitu</p>
-            <p>Saya sesat jalan banyak kali ya, sampai 2 jam setengah atas jalan HAHAHAHAH</p>
-            <p>Saya rindu awak 😺</p>
-        </div>
+        <div id="entries"></div>
 
-        <div class="entry">
-            <h2>15/3/2025</h2>
-            <p>Sebab semalam saya balik lambat, saya penat sangat lepas subuh saya sambung tido sampai pukul 12 hehe. Nasib baik umi tak marah</p>
-            <p>Oh pastu umi keluar dengan abah jalan-jalan beli barang raya. Mereka beli doorstopper bentuk llama. Comellll</p>
-            <img src="https://i.imgur.com/BgX6BBk.jpg" alt="llama" class="entry-img">
-            <p>then malam saya ada interview dengan mentor saya. lelaki. Beliau orang vietnam dan baikkk</p>
-            <p>saya rindu awak hehe</p>
-        </div>
+    <script>
+        let visibleEntries = 10;
+
+        fetch('https://script.google.com/macros/s/AKfycbwmMlD3VS9Vo93YKA5FG6Guw_MSV-8jN_T1A2skdKNFI8E3Z3UkeVrW5UyLb9W-c5xrwA/exec')
+        .then(response => response.json())
+        .then(data => {
+        let container = document.getElementById('entries');
+        let currentIndex = 0;
+
+        function loadEntries() {
+            let maxEntries = Math.min(currentIndex + visibleEntries, data.length);
+            for (let i = currentIndex; i < maxEntries; i++) {
+                let entry = data[i];
+                let div = document.createElement('div');
+                div.classList.add('entry');
+                div.innerHTML = `
+                    <h2>${entry.date}</h2>
+                    <p>${entry.text.replace(/\n/g, '<br>')}</p>
+                    ${entry.image ? `<img src="${entry.image}" alt="loading image" class="entry-img">` : ''}
+                `;
+                container.appendChild(div);
+            }
+            currentIndex = maxEntries;
+            if (currentIndex >= data.length) {
+                document.getElementById('loadMore').style.display = 'none'; // Hide button when all loaded
+            }
+        }
+
+        loadEntries(); // Load initial entries
+
+        document.getElementById('loadMore').addEventListener('click', loadEntries);
+    })
+    .catch(error => console.error("Error loading diary entries:", error));
+    </script>
     </div>
     </div>
 </body>

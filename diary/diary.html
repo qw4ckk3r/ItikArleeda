@@ -17,47 +17,141 @@
     <div class="container">
         <h1>Diari Razlan</h1>
         <h3>Just so you know you always on my mind though i cannot chat you everyday</h3>
-        <h3>Tunggu jap eh dia loading hehe</h3>
+        <h3>Tunggu jap eh dia loading..</h3>
+
+        <label for="sortOrder">Sort by:</label>
+        <select id="sortOrder">
+            <option value="recent">Recent (Newest First)</option>
+            <option value="oldest">Oldest First</option>
+        </select>
+
         <div id="entries"></div>
-        <button id="loadMore">Load More</button>
-    <script>
-        let visibleEntries = 10;
 
-        fetch('https://script.google.com/macros/s/AKfycbwmMlD3VS9Vo93YKA5FG6Guw_MSV-8jN_T1A2skdKNFI8E3Z3UkeVrW5UyLb9W-c5xrwA/exec')
-        .then(response => response.json())
-        .then(data => {
-        let container = document.getElementById('entries');
-        let currentIndex = 0;
+        <!-- Pagination Controls -->
+        <div id="pagination">
+            <button id="prevPage">Previous</button>
+            <span id="pageNumbers"></span>
+            <button id="nextPage">Next</button>
+        </div>
+    </div>
 
-        function loadEntries() {
-            let maxEntries = Math.min(currentIndex + visibleEntries, data.length);
-            for (let i = currentIndex; i < maxEntries; i++) {
-                let entry = data[i];
-                let div = document.createElement('div');
-                div.classList.add('entry');
-                div.innerHTML = `
-                    <h2>${entry.date}</h2>
-                    <p>${entry.text.replace(/\n/g, '<br>')}</p>
-                    ${entry.image ? `<img src="${entry.image}" alt="loading image" class="entry-img">` : ''}
-                `;
-                container.appendChild(div);
-            }
-            currentIndex = maxEntries;
-            if (currentIndex >= data.length) {
-                document.getElementById('loadMore').style.display = 'none';
+<script>
+    let entriesPerPage = 5;
+    let currentPage = 1;
+    let data = [];
+    let sortOrder = "recent"; // Default sorting: Newest first
+
+    // Fetch data from Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbwmMlD3VS9Vo93YKA5FG6Guw_MSV-8jN_T1A2skdKNFI8E3Z3UkeVrW5UyLb9W-c5xrwA/exec')
+    .then(response => response.json())
+    .then(fetchedData => {
+        console.log("Raw Data from API:", fetchedData); // Debugging
+        data = fetchedData;
+        sortEntries();
+    })
+    .catch(error => console.error("Error loading diary entries:", error));
+
+    function sortEntries() {
+        data.sort((a, b) => {
+            let dateA = parseDate(a.date);
+            let dateB = parseDate(b.date);
+            return sortOrder === "recent" ? dateB - dateA : dateA - dateB;
+        });
+
+        currentPage = 1; // Reset to first page after sorting
+        displayEntries();
+        updatePagination();
+    }
+
+    function parseDate(dateString) {
+        let parsedDate = new Date(dateString);
+
+        // Handle invalid date cases
+        if (isNaN(parsedDate)) {
+            parsedDate = new Date(dateString.replace(/-/g, '/')); // Convert YYYY-MM-DD to YYYY/MM/DD
+        }
+
+        if (isNaN(parsedDate)) {
+            let parts = dateString.match(/\d+/g);
+            if (parts) {
+                if (parts[0].length === 4) { 
+                    parsedDate = new Date(parts[0], parts[1] - 1, parts[2]);
+                } else { 
+                    parsedDate = new Date(parts[2], parts[1] - 1, parts[0]);
+                }
             }
         }
 
-        loadEntries(); 
+        return isNaN(parsedDate) ? new Date(0) : parsedDate; // Return epoch (0) if still invalid
+    }
 
-        document.getElementById('loadMore').addEventListener('click', loadEntries);
-    })
-    .catch(error => console.error("Error loading diary entries:", error));
-    </script>
-    </div>
-    </div>
-</body>
+    function displayEntries() {
+        let container = document.getElementById('entries');
+        container.innerHTML = '';
+
+        let startIndex = (currentPage - 1) * entriesPerPage;
+        let endIndex = Math.min(startIndex + entriesPerPage, data.length);
+
+        for (let i = startIndex; i < endIndex; i++) {
+            let entry = data[i];
+            let div = document.createElement('div');
+            div.classList.add('entry');
+            div.innerHTML = `
+                <h2>${entry.date}</h2>
+                <p>${entry.text.replace(/\n/g, '<br>')}</p>
+                ${entry.image ? `<img src="${entry.image}" alt="loading image" class="entry-img">` : ''}
+            `;
+            container.appendChild(div);
+        }
+    }
+
+    function updatePagination() {
+        let totalPages = Math.ceil(data.length / entriesPerPage);
+        let pageNumbersContainer = document.getElementById('pageNumbers');
+        pageNumbersContainer.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+            let btn = document.createElement('button');
+            btn.innerText = i;
+            btn.classList.add('page-btn');
+            if (i === currentPage) btn.classList.add('active');
+            btn.addEventListener('click', () => {
+                currentPage = i;
+                displayEntries();
+                updatePagination();
+            });
+            pageNumbersContainer.appendChild(btn);
+        }
+
+        document.getElementById('prevPage').disabled = currentPage === 1;
+        document.getElementById('nextPage').disabled = currentPage === totalPages;
+    }
+
+    document.getElementById('prevPage').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            displayEntries();
+            updatePagination();
+        }
+    });
+
+    document.getElementById('nextPage').addEventListener('click', () => {
+        let totalPages = Math.ceil(data.length / entriesPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayEntries();
+            updatePagination();
+        }
+    });
+
+    document.getElementById('sortOrder').addEventListener('change', (event) => {
+        sortOrder = event.target.value;
+        sortEntries();
+    });
+</script>
+
 <footer class="footer">
     &copy; 2025 ItikArleeda. All rights reserved.
 </footer>
+</body>
 </html>

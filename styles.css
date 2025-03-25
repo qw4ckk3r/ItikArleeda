@@ -16,6 +16,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    margin-top:20px;
 }
 
 /* Navigation Bar */
@@ -190,4 +191,52 @@ p {
 
 .close-btn:hover {
     background-color: #808000; /* Deep Olive Green */
+}
+
+/* Moving Banner */
+.banner {
+    width: 100%;
+    overflow: hidden;
+    background-color: #808000; /* Deep Olive Green */
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    top: 50px; /* Below the navbar */
+    left: 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+/* Scrolling text */
+.banner-text {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform;
+    animation: scrollBanner 10s linear infinite;
+    color: white;
+}
+
+/* Keyframes that start from completely off-screen */
+@keyframes scrollBanner {
+    from {
+        transform: translateX(100vw); /* Start outside the right edge */
+    }
+    to {
+        transform: translateX(-100%); /* Move fully out of view to the left */
+    }
+}
+
+/* Pause animation on hover (for desktop users) */
+.banner-text:hover {
+    animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .banner {
+        font-size: 14px;
+        height: 35px;
+    }
 }

@@ -44,7 +44,7 @@ body {
     max-width: 400px;
     width: 90%;
     text-align: center;
-    margin-top: 60px; /* Avoids navbar overlap */
+    margin-top: 70px; /* Avoids navbar overlap */
 }
 
 /* Headings */
@@ -77,7 +77,7 @@ h1 {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     user-select: none;
 }
@@ -105,13 +105,32 @@ h1 {
     border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     font-family: 'Fredoka One', cursive;
 }
 #resetButton:hover {
     background-color: #e64a19;
-    transform: scale(1.05);
+    transform: scale(1.07);
 }
+
+/* Reset Button */
+#showRankingButton {
+    background-color: #ff7043; /* Coral Orange */
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Fredoka One', cursive;
+}
+#showRankingButton:hover {
+    background-color: #e64a19;
+    transform: scale(1.07);
+}
+
 
 /* Mobile Optimization */
 @media (max-width: 480px) {
@@ -131,9 +150,117 @@ h1 {
     }
 }
 
+/* Popup Container */
+.popup {
+    background: #01579b;;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Leaderboard Container */
+.leaderboard-container {
+    background: #0288d1;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Leaderboard Style */
+.leaderboard {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: leaderboard-rank; /* Reset counter */
+}
+
+.leaderboard li {
+    background: #0288d1; /* Deep Ocean Blue */
+    color: #0288d1;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px 0;
+    font-size: 16px;
+    counter-increment: leaderboard-rank; /* Increment rank */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Add the ranking number automatically */
+.leaderboard li::before {
+    content: counter(leaderboard-rank) ". ";
+    font-weight: bold;
+    color: #ffcc00; /* Gold */
+    margin-right: 10px;
+}
+
+
+/* Input Field */
+input[type="text"] {
+    padding: 10px;
+    width: 85%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Buttons */
+.button {
+    background: #ff914d;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #ff772d;
+    transform: scale(1.05);
+}
+
+/* Play Again Button */
+.play-again {
+    background: #ff6600;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 14px 22px;
+}
+
+#submitScore, #noButton{
+    background: #ff6600;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 14px 22px;
+    margin-top: 10px;
+    color: white;
+    font-family: 'Fredoka One', cursive;
+}
+
+/* Footer */
 .footer {
     width: 100%;
-    background-color: #01579b; /* Deep Olive Green */
+    background-color: #01579b; /* Dark Navy Blue */
     color: white;
     text-align: center;
     padding: 10px 0;

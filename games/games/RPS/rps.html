@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissors!</title>
+    <link rel="icon" href="img/rspicon.png" type="image/icon type">
+    <link rel="stylesheet" href="rps.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../../games.html">Back</a>
+    </nav>
+    <div class="game-container">
+        <h1>Rock, Paper, Scissors</h1>
+        <div id="win-streak">Win Streak: 0</div>
+        <div class="choices">
+            <button class="choice" id="rock">
+                <img src="img/rock.jpg" alt="Rock" class="choice-img">
+                <span class="choice-text">Batu</span>
+            </button>
+            <button class="choice" id="paper">
+                <img src="img/paper.jpg" alt="Paper" class="choice-img">
+                <span class="choice-text">Kertas</span>
+            </button>
+            <button class="choice" id="scissors">
+                <img src="img/scissors.jpg" alt="Scissors" class="choice-img">
+                <span class="choice-text">Gunting</span>
+            </button>
+        </div>
+        <div id="result"></div>
+        <div id="user-choice"></div>
+        <div id="computer-choice"></div>
+
+        <div class="buttons-container">
+            <button id="showRankingButton">Tengok Ranking 📊</button>
+        </div>
+
+        <div id="popupOverlay" class="overlay" style="display: none;"></div>
+        <div id="popupContainer" class="popup" style="display: none;">
+            <div id="popupContent">
+                <h2>Leaderboard</h2>
+                <ol id="leaderboardList"></ol>
+                <button id="closePopup">Tutup</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="rps.js"></script>
+</body>
+<footer class="footer">
+    &copy; 2025 ItikArleeda. All rights reserved.
+</footer>
+</html>

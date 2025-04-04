@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+
+body {
+    font-family: 'Dangrek', sans-serif;
+    background-color: #BAB86C;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    text-align: center;
+    background: #D4D699;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 500px;
+    padding: 30px;
+    margin-top: 60px;
+}
+
+.container p{
+    color: #6B8E23; 
+    font-size: 16px;
+    font-family: 'Dangrek', sans-serif; 
+}
+
+/* Input Fields */
+input, textarea {
+    width: calc(100% - 20px);  /* Ensures consistent width inside container */
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #A2A572;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #6B8E23;
+    outline: none;
+    box-shadow: 0 0 5px rgba(107, 142, 35, 0.5);
+}
+
+/* Label Styling */
+label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4A6025;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Success Message */
+.success-message {
+    display: none;
+    color: green;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+/* Navigation Bar */
+.navbar {
+    width: 100%;
+    background-color: #808000; /* Deep Olive Green */
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Links */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+
+
+.footer {
+    width: 100%;
+    background-color: #808000;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
+}

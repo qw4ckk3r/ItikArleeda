@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Centre</title>
+    <link rel="icon" href="img/alert.png" type="image/icon type">
+    <link rel="stylesheet" href="report.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index.html">back</a>
+    </nav>
+    <div class="container">
+        <p>Jangan risau, saya je yang baca skksksk</p>
+        <form id="entryForm">
+            <label>Report/Suggestion date:</label>
+            <input type="date" id="dateField" required>
+            <label>Details:</label>
+            <textarea id="text" required></textarea>
+            <button type="submit">Send report/suggestion</button>
+        </form>
+        
+        <script>
+            document.getElementById('entryForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // plis jangan reload lagi dah
+
+    // Tarikh dawg
+    let dateInput = document.getElementById('dateField').value;
+    let dateObj = new Date(dateInput);
+    let formattedDate = `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
+
+    let data = {
+        date: formattedDate,
+        text: document.getElementById('text').value,
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbw9gXCFrWTuiANB0NL2SrEgdyMHeAUQBYXmELQnOpUvPvgJ6fxiLLgT4JnvhKM8ugWimw/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => console.log("Data sent successfully"))
+    .catch(error => console.error("Error:", error));
+
+    document.getElementById('entryForm').reset();
+    document.getElementById("dateField").value = new Date().toISOString().split('T')[0];
+});
+        </script>              
+    </div>
+    </div>
+</body>
+<footer class="footer">
+    &copy; 2025 ItikArleeda. All rights reserved.
+</footer>
+</html>

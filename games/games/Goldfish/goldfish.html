@@ -16,9 +16,25 @@
     <div class="match-container">
         <h1>Goldfish Memory! 🐠</h1>
         <p>Memori awak kuat tak?</p>
+
+        <p id="timerDisplay">Time: 0s</p>
+
         <div class="game-board" id="gameBoard"></div>
-        <p id="winMessage">Wauuu pandainya Arleeda Sofeaaa</p>
-        <button id="resetButton">Play Again 🔄</button>
+        <p id="winMessage" style="display: none;">Wauuu pandainya Arleeda Sofeaaa</p>
+
+        <div class="buttons-container">
+            <button id="resetButton">Play Again 🔄</button>
+            <button id="showRankingButton">Show Ranking 📊</button>
+        </div>
+    </div>
+    
+    <div id="popupOverlay" class="overlay" style="display: none;"></div>
+    <div id="popupContainer" class="popup" style="display: none;">
+        <div id="popupContent">
+            <h2>Leaderboard</h2>
+            <ol id="leaderboardList"></ol>
+            <button id="closePopup">Close</button>
+        </div>
     </div>
 
     <script src="goldfishscript.js"></script>

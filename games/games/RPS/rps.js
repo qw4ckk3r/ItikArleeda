@@ -115,25 +115,33 @@ function showPopup2() {
 }
 
 function fetchLeaderboard() {
-    fetch('https://script.google.com/macros/s/AKfycbwG0Ev3VXiJSBvq7dlECm8i7kSn0fucghcUJQcuT4u79Y6GJpBYCJ3YYxap0yuWYrjMYQ/exec')
+    fetch('https://script.google.com/macros/s/AKfycbyQi8_tGTmx8lRhNhXvoWwZEYdjOWf09QabHpYm7wmgPpJWKfcK5CnXAWyrl6JRiGPqIw/exec')
         .then(response => response.json())
         .then(data => {
+            if (!data || !Array.isArray(data)) {
+                throw new Error("Invalid data format");
+            }
+
+            // Convert to numbers safely (assuming 'score' is used instead of 'time')
+            const cleaned = data.map(entry => ({
+                name: entry.name,
+                score: Number(entry.score)  // Use the score (win streak) directly
+            })).filter(entry => !isNaN(entry.score));  // Filter out any invalid numbers
+
+            // Sort in descending order (highest to lowest score)
+            const sorted = cleaned.sort((a, b) => b.score - a.score);
+
+            // Get the top 5 elements (1 to 5, descending order)
+            const topFive = sorted.slice(0, 5);
+
             const leaderboardList = document.getElementById("leaderboardList");
             leaderboardList.innerHTML = "";
 
-            if (data && Array.isArray(data)) {
-                // Sort descending by score (time)
-                data.sort((a, b) => b.time - a.time);
-
-                // Show top 5
-                data.slice(0, 5).forEach(entry => {
-                    const li = document.createElement("li");
-                    li.textContent = `${entry.name} - ${entry.time} Streak!`;
-                    leaderboardList.appendChild(li);
-                });
-            } else {
-                leaderboardList.innerHTML = "<li>Error loading leaderboard</li>";
-            }
+            topFive.forEach(entry => {
+                const li = document.createElement("li");
+                li.textContent = `${entry.name} - ${entry.score} Streak!`; // Display name and score (win streak)
+                leaderboardList.appendChild(li);
+            });
         })
         .catch(error => {
             console.error("Leaderboard error:", error);
@@ -144,9 +152,9 @@ function fetchLeaderboard() {
 
 // Submit score
 function submitScore(name, score) {
-    fetch('https://script.google.com/macros/s/AKfycbwG0Ev3VXiJSBvq7dlECm8i7kSn0fucghcUJQcuT4u79Y6GJpBYCJ3YYxap0yuWYrjMYQ/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbyQi8_tGTmx8lRhNhXvoWwZEYdjOWf09QabHpYm7wmgPpJWKfcK5CnXAWyrl6JRiGPqIw/exec', {
         method: "POST",
-        body: JSON.stringify({ name: name, time: score })
+        body: JSON.stringify({ name: name, score: score })  // Submit the score (win streak)
     })
         .then(response => response.text())
         .then(() => {

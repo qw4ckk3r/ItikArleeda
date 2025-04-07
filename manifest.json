@@ -1,7 +1,7 @@
 {
     "name": "Untuk Arleeda",
     "short_name": "Itikleeda",
-    "start_url": ".",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",

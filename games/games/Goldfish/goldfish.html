@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goldfish Memory?!</title>
-    <link rel="icon" href="../../img/fish.png" type="image/icon type">
-    <link rel="stylesheet" href="goldfishstyle.css">
-</head>
+    <head>
+        <!-- Web App Manifest Link -->
+        <link rel="manifest" href="../../../manifest.json">
+    
+        <!-- Basic meta tags for web and iOS -->
+        <meta charset="UTF-8">
+        <meta name="theme-color" content="#BAB86C"> 
+        <meta name="description" content="A CMS web app powered by Google Sheets">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- iOS-specific meta tags -->
+        <link rel="apple-touch-icon" href="../../img/fish.png"> 
+        <meta name="apple-mobile-web-app-title" content="ItikArleeda">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+        <!-- Android-specific meta tags -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+    
+        <!-- Favicon for regular browsers -->
+        <link rel="icon" href="../../img/fish.png" type="image/x-icon">
+    
+        <!--Basics-->
+        <title>Goldfish Memory</title>
+        <link rel="icon" href="../../img/fish.png" type="image/icon type">
+        <link rel="stylesheet" href="goldfishstyle.css">
+
+    </head>
 <body>
 
     <nav class="navbar">
@@ -17,6 +39,7 @@
         <h1>Goldfish Memory! 🐠</h1>
         <p>Memori awak kuat tak?</p>
 
+        <!-- Timer Display -->
         <p id="timerDisplay">Time: 0s</p>
 
         <div class="game-board" id="gameBoard"></div>
@@ -27,7 +50,8 @@
             <button id="showRankingButton">Show Ranking 📊</button>
         </div>
     </div>
-    
+
+    <!-- Popup Container (Hidden by Default) -->
     <div id="popupOverlay" class="overlay" style="display: none;"></div>
     <div id="popupContainer" class="popup" style="display: none;">
         <div id="popupContent">

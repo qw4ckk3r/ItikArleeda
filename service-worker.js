@@ -4,9 +4,7 @@ const urlsToCache = [
   '/index.html',
   '/style.css',
   '/app.js',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
-  // Add any other assets you need to cache for offline use
+  'img/heart.png',
 ];
 
 // Install the service worker and cache the essential assets
